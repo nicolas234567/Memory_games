@@ -3,8 +3,38 @@ html{
     background-color: black;
     color: grey;
 }
+
 body{
     display: flex;
     flex-direction: column;
     text-align: center;
+}
+
+button{
+    background-color: grey;
+    color: black;
+    border: none;
+    max-width: 20%;
+}
+
+.cardContainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 100px);
+    padding-left : 5%;
+}
+
+.card{
+    background-color: red;
+    color: transparent;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card.reaveled{
+    background-color: lightcoral;
+    color: black;
 }
