@@ -8,6 +8,7 @@ function startGame(){
     hideCards();
 }
 
+// mélange 
 function shuffle(array){
     for(let i = array.length - 1; i > 0; i--){
         const j = Math.floor(Math.random() * (i + 1));
@@ -15,6 +16,7 @@ function shuffle(array){
     }
 }
 
+// cacher les cartes
 function hideCards(){
     const cards = document.querySelectorAll(".card");
     cards.forEach(card => {
@@ -22,6 +24,7 @@ function hideCards(){
     });
 }
 
+// dessiner le board
 function gameBoard(){
     const board = document.getElementById("gameBoard");
     board.innerHTML = "";
