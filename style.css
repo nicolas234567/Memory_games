@@ -34,7 +34,12 @@ button{
     justify-content: center;
 }
 
-.card.reaveled{
+.card.revealed{
+    background-color: lightcoral;
+    color: black;
+}
+
+.card.defrevealed{
     background-color: lightcoral;
     color: black;
 }
