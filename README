@@ -12,4 +12,54 @@ index.html
 style.css
 script.js
 images--
-        --images1.png
+        --images0.svg
+        --images1.svg
+        --images2.svg
+        --images3.svg
+        --images4.svg
+        --images5.svg
+        --images6.svg
+        --images7.svg
+        --images8.svg
+        --images9.svg
+        --images10.svg
+
+
+
+The logic :
+
+
+
+drawing the board :
+
+
+it shuffle a list of value, and then draw a div with the value in order of the list and go to the next one until there's no more.
+
+each value as an assign svg draw inside the div.
+
+
+hidding and reaveling :
+
+
+using the css opacity property to hide the svg.
+
+on click it put the opacity value to 100%.
+
+
+Checking for pair :
+
+
+on each click if there's two card with the revealed attribute the system check if the value are the same.
+
+if the value are the same it add a def_revealed attribute, and increment the counter.
+
+
+Deleting when clicking the 3rd one in a row :
+
+
+when clicking it checks if there's more than 2 card with the revealed attribute.
+
+if there's more than two it remove the revealed attribute on all card.
+
+and then reasign the reaveled attribute on the current clicked card.
+
