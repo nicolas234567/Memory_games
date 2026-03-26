@@ -1,4 +1,14 @@
 const originalValues = [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7];
+const img = {
+    0: "images/0.svg",
+    1: "images/1.svg",
+    2: "images/2.svg",
+    3: "images/3.svg",
+    4: "images/4.svg",
+    5: "images/5.svg",
+    6: "images/6.svg",
+    7: "images/7.svg",
+};
 values = [...originalValues];
 let moveCount = 0;
 let nombrePaire = 0;
@@ -23,32 +33,33 @@ function shuffle(array){
     }
 }
 
-// cacher les cartes
-function hideCards(){
-    const cards = document.querySelectorAll(".card");
-    cards.forEach(card => {
-        card.setAttribute("cardHidden", "true");
-    });
-}
-
 // dessiner le board
 function gameBoard(){
     const board = document.getElementById("gameBoard");
     board.innerHTML = "";
 
+    // créer les cartes
     for(let i = 0; i < 16; i++){
         const card = document.createElement("div");
         card.classList.add("card");
+        const value = values[i];
+
+        //ajout des images
+        const images = document.createElement("img");
+        images.src = img[value];
+        images.classList.add("card-image");
+
+        card.appendChild(images);
+
+        // gestion du clic
         card.addEventListener("click", function(){
             this.classList.add("revealed");
             checkCards();
+            removeCards();
+            this.classList.add("revealed");
          });
 
-        const value = values[i];
-
         card.dataset.value = value;
-
-        card.textContent = value;
 
         board.appendChild(card);
     }
@@ -57,7 +68,7 @@ function gameBoard(){
 //verifier les cartes
 function checkCards(){
     const revealedCards = document.querySelectorAll(".card.revealed");
-    if(revealedCards.length <= 2){
+    if(revealedCards.length === 2){
         updateMoveCount();
         if(revealedCards[0].dataset.value === revealedCards[1].dataset.value){
             revealedCards[0].classList.add("defrevealed");
@@ -65,24 +76,18 @@ function checkCards(){
             nombrePaire++;
             document.getElementById("nombrePaire").textContent = `${nombrePaire}`;
             checkWin();
-            removeCards();
         }
-        else{ 
-            setTimeout(() => {
-                removeCards();
-            }, 2000);    
-        }
-    }
-    else{
-        return;
     }
 }
 
 // enlever les cartes
 function removeCards(){
     const revealedCards = document.querySelectorAll(".card.revealed");
-    revealedCards[0].classList.remove("revealed");
-    revealedCards[1].classList.remove("revealed");
+    if(revealedCards.length === 3){
+        revealedCards.forEach(card => {
+            card.classList.remove("revealed");
+        });
+    }
 }
 // compter le nombre de coups
 function updateMoveCount(){

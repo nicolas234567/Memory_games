@@ -1,0 +1,15 @@
+This project is a memory game running in Javascript.
+
+Lauching :
+
+-dowloading 
+
+-running index.html in a browser
+
+Tree :
+
+index.html
+style.css
+script.js
+images--
+        --images1.png
