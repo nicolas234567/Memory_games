@@ -24,6 +24,14 @@ button{
     padding-left : 5%;
 }
 
+/* augmentation du nombre de colone pour rester sur une page */
+.cardContainer.hard{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 100px);
+    padding-left : 5%;
+}
+
 .card{
     background-color: red;
     color: transparent;

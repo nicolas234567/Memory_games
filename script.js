@@ -1,4 +1,8 @@
-const originalValues = [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7];
+const difficultySettings = {
+    easy: 8,
+    medium: 16,
+    hard: 32
+};
 const img = {
     0: "images/0.svg",
     1: "images/1.svg",
@@ -8,21 +12,39 @@ const img = {
     5: "images/5.svg",
     6: "images/6.svg",
     7: "images/7.svg",
+    8: "images/8.svg",
+    9: "images/9.svg",
+    10: "images/10.svg",
+    11: "images/11.svg",
+    12: "images/12.svg",
+    13: "images/13.svg",
+    14: "images/14.svg",
+    15: "images/15.svg"
 };
-values = [...originalValues];
 let moveCount = 0;
 let nombrePaire = 0;
 let bestMoveCount = 100;
 
 function startGame(){
     const startButton = document.getElementById("startButton");
+    difficulty(difficultySettings);
     shuffle(values);
     moveCount = 0;
     document.getElementById("moveCount").textContent = `${moveCount}`;
     nombrePaire = 0;
     document.getElementById("nombrePaire").textContent = `${nombrePaire}`;
-    gameBoard();
+    gameBoard(difficultyValues);
     hideCards();
+}
+
+// réglage de la difficulté et génération des valeurs
+function difficulty(){
+    const difficultySelect = document.getElementById("difficulty");
+    const selectedDifficulty = difficultySelect.value;
+    let size = difficultySettings[selectedDifficulty];
+    difficultyValues = Array.from({ length: size }, (_, i) => i + 1);
+    value = Array.from({ length: size/2 }, (_, i) => i + 1);
+    values = value.concat(value);
 }
 
 // mélange 
@@ -37,9 +59,13 @@ function shuffle(array){
 function gameBoard(){
     const board = document.getElementById("gameBoard");
     board.innerHTML = "";
+    if(difficultyValues.length > 16){
+        board.classList.add("cardContainer", "hard");
+    }
 
     // créer les cartes
-    for(let i = 0; i < 16; i++){
+    let lenValues = difficultyValues.length;
+    for(let i = 0; i < lenValues; i++){
         const card = document.createElement("div");
         card.classList.add("card");
         const value = values[i];
@@ -97,7 +123,7 @@ function updateMoveCount(){
 
 // verifier si le jeu est terminé
 function checkWin(){
-    if(nombrePaire === 8){setTimeout(() => {
+    if(nombrePaire === values.length / 2){setTimeout(() => {
             alert(`Félicitations ! Vous avez gagné en ${moveCount} coups.`);
             updateBestScore();
         }, 1000);
