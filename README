@@ -12,7 +12,6 @@ index.html
 style.css
 script.js
 images--
-        --images0.svg
         --images1.svg
         --images2.svg
         --images3.svg
@@ -23,6 +22,12 @@ images--
         --images8.svg
         --images9.svg
         --images10.svg
+        --images11.svg
+        --images12.svg
+        --images13.svg
+        --images14.svg
+        --images15.svg
+        --images16.svg
 
 
 

@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Memory</h1>
-    <div>Choisir la difficulté : <select id="difficulty">
+    <h1 class="texte">Memory</h1>
+    <div class="texte">Choisir la difficulté : <select id="difficulty">
         <option value="easy">Facile</option>
         <option value="medium">Moyen</option>
         <option value="hard">Difficile</option>
     </select></div>
-    <div><button id="startButton" onclick="startGame()">Démarrer la partie</button></div>
-    <div>votre nombre de coup : <span id="moveCount">0</span> votre meilleur score : <span id="bestMoveCount">0</span></div>
-    <div>Nombre de paires : <span id="nombrePaire">0</span></div>
+    <div class="texte"><button id="startButton" onclick="startGame()">Démarrer la partie</button></div>
+    <div class="texte">votre nombre de coup : <span id="moveCount">0</span> votre meilleur score : <span id="bestMoveCount">0</span></div>
+    <div class="texte">Nombre de paires : <span id="nombrePaire">0</span></div>
     <div class="cardContainer" id="gameBoard"></div>
     <script src="script.js"></script>
 </body>

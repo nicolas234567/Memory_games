@@ -21,13 +21,19 @@ const img = {
     15: "images/15.svg",
     16: "images/16.svg"
 };
+
 let moveCount = 0;
 let nombrePaire = 0;
-let bestMoveCount = 100;
+let currentDifficulty = "easy";
+const bestScores = {
+    easy: 1000,
+    medium: 1000,
+    hard: 1000
+}
 
 function startGame(){
     const startButton = document.getElementById("startButton");
-    difficulty(difficultySettings);
+    difficulty();
     shuffle(values);
     moveCount = 0;
     document.getElementById("moveCount").textContent = `${moveCount}`;
@@ -41,6 +47,7 @@ function startGame(){
 function difficulty(){
     const difficultySelect = document.getElementById("difficulty");
     const selectedDifficulty = difficultySelect.value;
+    currentDifficulty = difficultySelect.value;
     let size = difficultySettings[selectedDifficulty];
     difficultyValues = Array.from({ length: size }, (_, i) => i + 1);
     value = Array.from({ length: size/2 }, (_, i) => i + 1);
@@ -79,10 +86,15 @@ function gameBoard(){
 
         // gestion du clic
         card.addEventListener("click", function(){
-            this.classList.add("revealed");
-            checkCards();
-            removeCards();
-            this.classList.add("revealed");
+            if(this.classList.contains("revealed")){
+                return ;
+            }
+            else{
+                this.classList.add("revealed");
+                checkCards();
+                removeCards();
+                this.classList.add("revealed");
+            }
          });
 
         card.dataset.value = value;
@@ -125,15 +137,20 @@ function updateMoveCount(){
 function checkWin(){
     if(nombrePaire === values.length / 2){setTimeout(() => {
             alert(`Félicitations ! Vous avez gagné en ${moveCount} coups.`);
-            updateBestScore();
+            updateBestScore(currentDifficulty);
         }, 1000);
     }
 }
 
 // mettre a jour le meilleur score
 function updateBestScore(){
-    if(moveCount < bestMoveCount){
-        bestMoveCount = moveCount;
-        document.getElementById("bestMoveCount").textContent = `${bestMoveCount}`;
+    if (moveCount < bestScores[currentDifficulty]) {
+        bestScores[currentDifficulty] = moveCount;
+
+        if (currentDifficulty === "easy") bestMoveCountEasy = moveCount;
+        if (currentDifficulty === "medium") bestMoveCountMedium = moveCount;
+        if (currentDifficulty === "hard") bestMoveCountHard = moveCount;
+
+        document.getElementById("bestMoveCount").textContent = `${moveCount}`;
     }
 }
