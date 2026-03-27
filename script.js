@@ -4,7 +4,6 @@ const difficultySettings = {
     hard: 32
 };
 const img = {
-    0: "images/0.svg",
     1: "images/1.svg",
     2: "images/2.svg",
     3: "images/3.svg",
@@ -19,7 +18,8 @@ const img = {
     12: "images/12.svg",
     13: "images/13.svg",
     14: "images/14.svg",
-    15: "images/15.svg"
+    15: "images/15.svg",
+    16: "images/16.svg"
 };
 let moveCount = 0;
 let nombrePaire = 0;
