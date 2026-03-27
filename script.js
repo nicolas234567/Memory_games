@@ -69,6 +69,9 @@ function gameBoard(){
     if(difficultyValues.length > 16){
         board.classList.add("cardContainer", "hard");
     }
+    else{
+        board.classList.remove("hard");
+    }
 
     // créer les cartes
     let lenValues = difficultyValues.length;
