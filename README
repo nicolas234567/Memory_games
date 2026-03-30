@@ -68,3 +68,5 @@ if there's more than two it remove the revealed attribute on all card.
 
 and then reasign the reaveled attribute on the current clicked card.
 
+reclicking a card with revealed attribute does nothing
+
